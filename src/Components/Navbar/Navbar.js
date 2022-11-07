@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from '../../assest/logo.png'
+import logo from "../../assest/logo.png";
+import { AuthContext } from "../Authentication/Authentication";
 
 const Navbar = () => {
-    const [navbar, setNavbar] = useState(false);
+  const { user } = useContext(AuthContext);
+  console.log(user?.uid);
+
+  const [navbar, setNavbar] = useState(false);
   return (
     <nav className="w-full bg-white shadow">
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
@@ -70,12 +74,22 @@ const Navbar = () => {
               <li className="text-gray-600 hover:text-blue-600">
                 <Link to="/">blog</Link>
               </li>
-              <li className="text-gray-600 hover:text-blue-600">
-                <Link to="/">LogIn</Link>
-              </li>
-              <li className="text-gray-600 hover:text-blue-600">
-                <Link to="/">Register</Link>
-              </li>
+              {user?.uid ? (
+                <>
+                  <li className="text-gray-600 hover:text-blue-600">
+                    <Link to="/register">Sign Out</Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="text-gray-600 hover:text-blue-600">
+                    <Link to="/">LogIn</Link>
+                  </li>
+                  <li className="text-gray-600 hover:text-blue-600">
+                    <Link to="/register">Register</Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
