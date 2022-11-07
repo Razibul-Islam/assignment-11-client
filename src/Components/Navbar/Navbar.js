@@ -4,8 +4,13 @@ import logo from "../../assest/logo.png";
 import { AuthContext } from "../Authentication/Authentication";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
-  console.log(user?.uid);
+  const { user, logout } = useContext(AuthContext);
+  // console.log(user?.uid);
+  const handleLogOut = () => [
+    logout()
+      .then(() => { })
+      .catch(err => console.error(err))
+]
 
   const [navbar, setNavbar] = useState(false);
   return (
@@ -77,13 +82,22 @@ const Navbar = () => {
               {user?.uid ? (
                 <>
                   <li className="text-gray-600 hover:text-blue-600">
+                    <Link to="/register">My Reviews</Link>
+                  </li>
+                  <li className="text-gray-600 hover:text-blue-600">
+                    <Link to="/register">Add Service</Link>
+                  </li>
+                  <li
+                    onClick={handleLogOut}
+                    className="text-gray-600 hover:text-blue-600"
+                  >
                     <Link to="/register">Sign Out</Link>
                   </li>
                 </>
               ) : (
                 <>
                   <li className="text-gray-600 hover:text-blue-600">
-                    <Link to="/">LogIn</Link>
+                    <Link to="/login">LogIn</Link>
                   </li>
                   <li className="text-gray-600 hover:text-blue-600">
                     <Link to="/register">Register</Link>
