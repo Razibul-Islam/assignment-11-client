@@ -5,7 +5,7 @@ const Portfolio = () => {
   const { user } = useContext(AuthContext);
 
   return (
-      <div className="p-10">
+    <div className="p-10">
       <div className="relative max-w-md mx-auto md:max-w-2xl mt-6 min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-xl mt-16">
         <div className="px-6">
           <div className="flex flex-wrap justify-center">
@@ -17,14 +17,13 @@ const Portfolio = () => {
                       ? user?.photoURL
                       : "https://img.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg?w=740&t=st=1667929476~exp=1667930076~hmac=9e79d1b1e7f9dcad815a25e7f1cbcb2d5219788ca741bc465ad09da1f7119ca7"
                   }
-                  className="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
+                  className="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-20 max-w-[150px]"
                   alt=""
                 />
               </div>
             </div>
-            iv>
           </div>
-          <div className="text-center mt-20">
+          <div className="text-center mt-24">
             <h3 className="text-2xl text-slate-700 font-bold leading-normal mb-1">
               {user?.displayName ? user?.displayName : "Author"}
             </h3>

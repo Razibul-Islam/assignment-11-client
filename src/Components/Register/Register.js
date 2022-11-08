@@ -1,14 +1,26 @@
 import { GoogleAuthProvider } from "firebase/auth";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Authentication/Authentication";
 
 const Register = () => {
-  const { register, providerLogin } = useContext(AuthContext);
+  const { register, providerLogin, updateUserProfile } =
+    useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+
+   const handleUpdateUserProfile = (name, photoURL) => {
+     const profile = {
+       displayName: name,
+       photoURL: photoURL,
+     };
+     updateUserProfile(profile)
+       .then(() => {})
+       .catch((error) => console.error(error));
+   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -22,12 +34,16 @@ const Register = () => {
     register(email, password)
       .then((result) => {
         const user = result.user;
+        setLoading(true);
+        handleUpdateUserProfile(name, photo);
         form.reset()
         // console.log(user);
         navigate('/')
       })
       .catch((err) => console.error(err.code));
   };
+
+ 
 
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)

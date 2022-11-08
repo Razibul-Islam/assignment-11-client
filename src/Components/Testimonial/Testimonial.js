@@ -3,10 +3,10 @@ import React from "react";
 const Testimonial = () => {
   return (
     <div>
-      <h1 className="text-7xl text-center font-mono tracking-widest mt-10 -mb-20">
+      <h1 className="text-7xl text-center font-mono tracking-widest mt-10">
         ABOUT
       </h1>
-      <div className="lg:flex mt-20">
+      <div className="lg:flex">
         <div className="lg:w-1/2 flex items-center justify-center">
           <img
             src={
