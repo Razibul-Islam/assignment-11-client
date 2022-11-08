@@ -1,11 +1,26 @@
-import React from 'react';
+import React from "react";
 
 const MiddleBanner = () => {
-    return (
-        <div>
-            Hello
-        </div>
-    );
+  return (
+    <div className="h-[500px] mt-5">
+      <div
+        className="h-full bg-cover bg-no-repeat bg-center bg-fixed text-white flex flex-col items-center justify-center"
+        style={{
+          backgroundImage: `url(${"https://img.freepik.com/free-photo/beautiful-adult-couple-spends-time-summer-field_1157-24769.jpg?w=1060&t=st=1667905618~exp=1667906218~hmac=0a4997ee32fca94ba93b80ac77337560fd65b69cf995ef578748d756ca377cbb"})`,
+        }}
+      >
+        <h1 className="text-4xl font-[Caveat]">Get Started</h1>
+        <h1 className="text-7xl font-serif">
+          Make your wedding
+          <br />a wonderful story.
+        </h1>
+        <p className="text-lg">
+          Quam etiam nunc fusce consectetuer libero tellus facilisis iaculis
+          tempor senectus arcu
+        </p>
+      </div>
+    </div>
+  );
 };
 
 export default MiddleBanner;
