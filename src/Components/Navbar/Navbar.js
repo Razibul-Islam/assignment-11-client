@@ -1,16 +1,17 @@
 import React, { useContext, useState } from "react";
+import { FaUserAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../../assest/logo.png";
 import { AuthContext } from "../Authentication/Authentication";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
-  // console.log(user?.uid);
+  // console.log(user?.photoURL);
   const handleLogOut = () => [
     logout()
-      .then(() => { })
-      .catch(err => console.error(err))
-]
+      .then(() => {})
+      .catch((err) => console.error(err)),
+  ];
 
   const [navbar, setNavbar] = useState(false);
   return (
@@ -74,7 +75,7 @@ const Navbar = () => {
                 <Link to="/services">Services</Link>
               </li>
               <li className="text-gray-600 hover:text-blue-600">
-                <Link to="/">Portfolio</Link>
+                <Link to="/portfolio">Portfolio</Link>
               </li>
               <li className="text-gray-600 hover:text-blue-600">
                 <Link to="/">blog</Link>
@@ -82,16 +83,27 @@ const Navbar = () => {
               {user?.uid ? (
                 <>
                   <li className="text-gray-600 hover:text-blue-600">
-                    <Link to="/register">My Reviews</Link>
+                    <Link to="/">My Reviews</Link>
                   </li>
                   <li className="text-gray-600 hover:text-blue-600">
-                    <Link to="/register">Add Service</Link>
+                    <Link to="/addservices">Add Service</Link>
                   </li>
                   <li
                     onClick={handleLogOut}
                     className="text-gray-600 hover:text-blue-600"
                   >
                     <Link to="/register">Sign Out</Link>
+                  </li>
+                  <li>
+                    <img
+                      className="w-20 rounded-full"
+                      src={
+                        user?.photoURL
+                          ? user?.photoURL
+                          : "https://img.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg?w=740&t=st=1667929476~exp=1667930076~hmac=9e79d1b1e7f9dcad815a25e7f1cbcb2d5219788ca741bc465ad09da1f7119ca7"
+                      }
+                      alt=""
+                    />
                   </li>
                 </>
               ) : (

@@ -8,9 +8,7 @@ const HomeServices = () => {
     <div className="mt-10">
       <h1 className="text-6xl font-semibold text-center">My Service</h1>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-7">
-        {services
-          .filter((item, index) => index < 3)
-          .map((service) => (
+        {services.map((service) => (
             <HomeServiceLimit
               key={services?.uid}
               SingleService={service}

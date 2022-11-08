@@ -4,16 +4,23 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import { Pagination, Navigation } from "swiper";
+import { Pagination, Navigation, Autoplay } from "swiper";
 export default function Banner() {
   return (
     <>
       <Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        loop={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         pagination={{
-          type: "progressbar",
+          clickable: true,
         }}
         navigation={true}
-        modules={[Pagination, Navigation]}
+        modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
         <SwiperSlide>
