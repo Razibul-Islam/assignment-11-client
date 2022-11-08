@@ -4,6 +4,7 @@ import AddService from "../AddService/AddService";
 import AllServices from "../AllServices/AllServices";
 import Blog from "../Blog/Blog";
 import Details from "../Details/Details";
+import Error from "../Error/Error";
 import Home from "../Home/Home";
 import Login from "../Login/Login";
 import Portfolio from "../Portfolio/Portfolio";
@@ -12,6 +13,7 @@ import Register from "../Register/Register";
 export const router = createBrowserRouter([
   {
     path: "/",
+    errorElement:<Error></Error>,
     element: <Main></Main>,
     children: [
       {
