@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../Authentication/Authentication";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 const Portfolio = () => {
   const { user } = useContext(AuthContext);
@@ -11,15 +13,25 @@ const Portfolio = () => {
           <div className="flex flex-wrap justify-center">
             <div className="w-full flex justify-center">
               <div className="relative">
-                <img
-                  src={
-                    user?.photoURL
-                      ? user?.photoURL
-                      : "https://img.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg?w=740&t=st=1667929476~exp=1667930076~hmac=9e79d1b1e7f9dcad815a25e7f1cbcb2d5219788ca741bc465ad09da1f7119ca7"
-                  }
-                  className="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-20 max-w-[150px]"
-                  alt=""
-                />
+                <PhotoProvider>
+                  <PhotoView
+                    src={
+                      user?.photoURL
+                        ? user?.photoURL
+                        : "https://img.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg?w=740&t=st=1667929476~exp=1667930076~hmac=9e79d1b1e7f9dcad815a25e7f1cbcb2d5219788ca741bc465ad09da1f7119ca7"
+                    }
+                  >
+                    <img
+                      src={
+                        user?.photoURL
+                          ? user?.photoURL
+                          : "https://img.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg?w=740&t=st=1667929476~exp=1667930076~hmac=9e79d1b1e7f9dcad815a25e7f1cbcb2d5219788ca741bc465ad09da1f7119ca7"
+                      }
+                      className="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-20 max-w-[150px]"
+                      alt=""
+                    />
+                  </PhotoView>
+                </PhotoProvider>
               </div>
             </div>
           </div>

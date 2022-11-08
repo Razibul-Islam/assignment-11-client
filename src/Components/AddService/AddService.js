@@ -3,10 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Authentication/Authentication";
 
 const AddService = () => {
-    
-    // const { user } = useContext(AuthContext);
-    const navigete = useNavigate();
-
+  // const { user } = useContext(AuthContext);
+  const navigete = useNavigate();
 
   const handleAddService = (event) => {
     event.preventDefault();
@@ -21,7 +19,7 @@ const AddService = () => {
     console.log(serviceName);
 
     const service = {
-    //   serviceId: _id,
+      //   serviceId: _id,
       service: serviceName,
       logoURL: logo,
       discription: description,
@@ -39,8 +37,8 @@ const AddService = () => {
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
-          form.reset();
-          navigete('/services')
+        form.reset();
+        navigete("/services");
       })
       .catch((err) => console.error(err));
   };

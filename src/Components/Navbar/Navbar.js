@@ -78,7 +78,7 @@ const Navbar = () => {
                 <Link to="/portfolio">Portfolio</Link>
               </li>
               <li className="text-gray-600 hover:text-blue-600">
-                <Link to="/">blog</Link>
+                <Link to="/blog">blog</Link>
               </li>
               {user?.uid ? (
                 <>
