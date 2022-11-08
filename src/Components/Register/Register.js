@@ -1,9 +1,12 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
+import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Authentication/Authentication";
 
 const Register = () => {
-  const { register } = useContext(AuthContext);
+  const { register, providerLogin } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
 
   const navigate = useNavigate();
 
@@ -24,6 +27,18 @@ const Register = () => {
         navigate('/')
       })
       .catch((err) => console.error(err.code));
+  };
+
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        // console.log(user);
+        navigate('/')
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
@@ -79,6 +94,14 @@ const Register = () => {
               {" "}
               Sign In
             </Link>
+          </div>
+          <div className="flex justify-center my-6">
+            <button
+              onClick={handleGoogleSignIn}
+              className="p-3 w-full flex items-center justify-around sm:w-56 bg-gradient-to-l from-sky-600  to-teal-300 text-white text-lg font-semibold"
+            >
+              <FaGoogle /> Login With Google
+            </button>
           </div>
         </form>
       </div>

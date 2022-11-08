@@ -1,9 +1,12 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Authentication/Authentication";
+import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-  const { Login } = useContext(AuthContext);
+  const { Login, providerLogin } = useContext(AuthContext);
+ const googleProvider = new GoogleAuthProvider();
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -13,10 +16,21 @@ const Login = () => {
     // console.log(email, password);
     Login(email, password)
       .then((result) => {
-          const user = result.user;
-          form.reset()
+        const user = result.user;
+        form.reset();
       })
       .catch((error) => console.error(error));
+  };
+
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        // console.log(user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
@@ -57,6 +71,14 @@ const Login = () => {
               {" "}
               Sign Up
             </Link>
+          </div>
+          <div className="flex justify-center my-6">
+            <button
+              onClick={handleGoogleSignIn}
+              className="p-3 w-full flex items-center justify-around sm:w-56 bg-gradient-to-l from-sky-600  to-teal-300 text-white text-lg font-semibold"
+            >
+              <FaGoogle /> Login With Google
+            </button>
           </div>
         </form>
       </div>
