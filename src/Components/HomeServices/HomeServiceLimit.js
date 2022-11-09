@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const HomeServiceLimit = ({ SingleService }) => {
-  const { discription, logoURL, price, rating, service, _id } = SingleService;
+  const { description, logoURL, price, rating, service, _id } = SingleService;
   return (
     <div>
       <div className="px-4">
@@ -36,10 +36,10 @@ const HomeServiceLimit = ({ SingleService }) => {
           <p>Price: ${price}</p>
           <p>Rating: {rating}</p>
           <p className="text-body-color">
-            {discription.length > 100 ? (
-              <p>{discription.slice(0, 100) + "..."}</p>
+            {description.length > 100 ? (
+              <p>{description.slice(0, 100) + "..."}</p>
             ) : (
-              <p>{discription}</p>
+              <p>{description}</p>
             )}
           </p>
           <div className="text-right">

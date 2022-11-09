@@ -22,7 +22,7 @@ const AddService = () => {
     const service = {
       service: serviceName,
       logoURL: logo,
-      discription: description,
+      description,
       price,
       imgURL: image,
       rating,

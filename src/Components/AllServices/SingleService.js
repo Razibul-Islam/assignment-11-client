@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const SingleService = ({ singleService }) => {
-  const { discription, logoURL, price, rating, service, _id } = singleService;
+  const { description, logoURL, price, rating, service, _id } = singleService;
   return (
     <div className="px-4">
       <div
@@ -35,10 +35,10 @@ const SingleService = ({ singleService }) => {
         <p>Price: ${price}</p>
         <p>Ratings: {rating}</p>
         <p className="text-body-color">
-          {discription.length > 100 ? (
-            <p>{discription.slice(0, 100) + "..."}</p>
+          {description.length > 100 ? (
+            <p>{description.slice(0, 100) + "..."}</p>
           ) : (
-            <p>{discription}</p>
+            <p>{description}</p>
           )}
         </p>
         <div className="text-right">
