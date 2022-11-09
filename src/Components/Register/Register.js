@@ -1,26 +1,29 @@
 import { GoogleAuthProvider } from "firebase/auth";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useTitle from "../../hooks/title";
 import { AuthContext } from "../Authentication/Authentication";
 
 const Register = () => {
+  useTitle("Register");
   const { register, providerLogin, updateUserProfile } =
     useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
-  const [loading, setLoading] = useState(false);
-
   const navigate = useNavigate();
+  const location = useLocation();
 
-   const handleUpdateUserProfile = (name, photoURL) => {
-     const profile = {
-       displayName: name,
-       photoURL: photoURL,
-     };
-     updateUserProfile(profile)
-       .then(() => {})
-       .catch((error) => console.error(error));
-   };
+  const from = location.state?.from?.pathname || "/";
+
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL,
+    };
+    updateUserProfile(profile)
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -34,23 +37,20 @@ const Register = () => {
     register(email, password)
       .then((result) => {
         const user = result.user;
-        setLoading(true);
         handleUpdateUserProfile(name, photo);
-        form.reset()
+        form.reset();
         // console.log(user);
-        navigate('/')
+        navigate(from, { replace: true });
       })
       .catch((err) => console.error(err.code));
   };
-
- 
 
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
         // console.log(user);
-        navigate('/')
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);

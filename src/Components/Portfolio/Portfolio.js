@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import { AuthContext } from "../Authentication/Authentication";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import useTitle from "../../hooks/title";
 
 const Portfolio = () => {
   const { user } = useContext(AuthContext);
+  useTitle("Portfolio");
 
   return (
     <div className="p-10">
@@ -27,7 +29,7 @@ const Portfolio = () => {
                           ? user?.photoURL
                           : "https://img.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg?w=740&t=st=1667929476~exp=1667930076~hmac=9e79d1b1e7f9dcad815a25e7f1cbcb2d5219788ca741bc465ad09da1f7119ca7"
                       }
-                      className="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-20 max-w-[150px]"
+                      className="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-14 lg:-ml-16 max-w-[150px]"
                       alt=""
                     />
                   </PhotoView>

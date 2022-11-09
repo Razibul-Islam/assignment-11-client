@@ -34,6 +34,7 @@ const HomeServiceLimit = ({ SingleService }) => {
           </div>
           <h4 className="font-semibold text-xl text-dark mb-3">{service}</h4>
           <p>Price: ${price}</p>
+          <p>Rating: {rating}</p>
           <p className="text-body-color">
             {discription.length > 100 ? (
               <p>{discription.slice(0, 100) + "..."}</p>

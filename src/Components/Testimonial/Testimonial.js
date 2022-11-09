@@ -6,7 +6,7 @@ const Testimonial = () => {
       <h1 className="text-7xl text-center font-mono tracking-widest mt-10">
         ABOUT
       </h1>
-      <div className="lg:flex">
+      <div className="lg:flex lg:p-0 p-5">
         <div className="lg:w-1/2 flex items-center justify-center">
           <img
             src={

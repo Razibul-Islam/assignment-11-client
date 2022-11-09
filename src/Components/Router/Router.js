@@ -9,11 +9,13 @@ import Home from "../Home/Home";
 import Login from "../Login/Login";
 import Portfolio from "../Portfolio/Portfolio";
 import Register from "../Register/Register";
+import Review from "../Review/Review";
+import PrivateRouter from "./PrivateRouter";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    errorElement:<Error></Error>,
+    errorElement: <Error></Error>,
     element: <Main></Main>,
     children: [
       {
@@ -42,16 +44,29 @@ export const router = createBrowserRouter([
         },
       },
       {
-        path: '/addservices',
-        element: <AddService></AddService>
+        path: "/addservices",
+        element: (
+          <PrivateRouter>
+            <AddService></AddService>
+          </PrivateRouter>
+        ),
       },
       {
-        path: '/portfolio',
-        element: <Portfolio></Portfolio>
-      }, {
-        path: '/blog',
-        element:<Blog></Blog>
-      }
+        path: "/portfolio",
+        element: (
+          <PrivateRouter>
+            <Portfolio></Portfolio>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
+      },
+      {
+        path: "/review",
+        element: <Review></Review>,
+      },
     ],
   },
 ]);

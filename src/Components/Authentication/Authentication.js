@@ -15,17 +15,20 @@ const auth = getAuth(app);
 
 const Authentication = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const register = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const logout = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
   const Login = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -50,6 +53,7 @@ const Authentication = ({ children }) => {
   }, []);
 
   const AuthInfo = {
+    loading,
     user,
     register,
     Login,

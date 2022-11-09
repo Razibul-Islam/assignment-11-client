@@ -1,9 +1,12 @@
 import React from "react";
-import { FaStar } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
+import Review from "./Review";
+import useTitle from "../../hooks/title";
+
 
 const Details = () => {
-  const { discription, imgURL, price, rating, service} = useLoaderData();
+  const { discription, imgURL, service, _id } = useLoaderData();
+  useTitle('Details');
 
   return (
     <div>
@@ -13,16 +16,13 @@ const Details = () => {
           backgroundImage: `url(${imgURL})`,
         }}
       >
-        <p className="uppercase p-2 bg-gray-400 text-gray-800">PhotoGraphy</p>
-        <h1 className="lg:text-7xl text-2xl">{service}</h1>
+        <p className="uppercase p-2 bg-black text-white">PhotoGraphy</p>
+        <h1 className="lg:text-7xl text-2xl text-white">{service}</h1>
       </div>
-      <div className="w-5/6 mx-auto bg-white -mt-10 p-5 ">
+      <div className="w-5/6 mx-auto bg-white -mt-10 p-5">
         <p>{discription}</p>
-        <div className="mt-5 text-xl">
-          <p>Price: ${price}</p>
-          <p className="flex items-center">
-            Ratings: {rating} <FaStar className="pl-2 text-2xl text-yellow-400" />
-          </p>
+        <div>
+          <Review id={_id} name={service}></Review>
         </div>
       </div>
     </div>

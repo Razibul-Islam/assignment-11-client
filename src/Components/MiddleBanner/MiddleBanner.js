@@ -15,7 +15,7 @@ const MiddleBanner = () => {
             Make your wedding
             <br />a wonderful story.
           </h1>
-          <p className="text-lg">
+          <p className="text-lg text-center">
             Quam etiam nunc fusce consectetuer libero tellus facilisis iaculis
             tempor senectus arcu
           </p>

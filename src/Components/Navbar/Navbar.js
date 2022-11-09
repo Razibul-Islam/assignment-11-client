@@ -74,19 +74,20 @@ const Navbar = () => {
               <li className="text-gray-600 hover:text-blue-600">
                 <Link to="/services">Services</Link>
               </li>
-              <li className="text-gray-600 hover:text-blue-600">
-                <Link to="/portfolio">Portfolio</Link>
-              </li>
+
               <li className="text-gray-600 hover:text-blue-600">
                 <Link to="/blog">blog</Link>
               </li>
               {user?.uid ? (
                 <>
                   <li className="text-gray-600 hover:text-blue-600">
-                    <Link to="/">My Reviews</Link>
+                    <Link to="/review">My Reviews</Link>
                   </li>
                   <li className="text-gray-600 hover:text-blue-600">
                     <Link to="/addservices">Add Service</Link>
+                  </li>
+                  <li className="text-gray-600 hover:text-blue-600">
+                    <Link to="/portfolio">Portfolio</Link>
                   </li>
                   <li
                     onClick={handleLogOut}

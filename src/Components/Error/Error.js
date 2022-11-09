@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useTitle from "../../hooks/title";
 
 const Error = () => {
+  useTitle("Error")
   return (
     <div>
       <div
