@@ -24,6 +24,11 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         form.reset();
+        // if (user?.email) {
+        //   const currentUser = {
+        //     email: user.email;
+        //   }
+        // }
         navigate(from, { replace: true });
       })
       .catch((error) => console.error(error));

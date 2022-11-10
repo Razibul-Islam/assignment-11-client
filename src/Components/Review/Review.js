@@ -8,7 +8,7 @@ const Review = () => {
   const [reviews, setReviews] = useState([]);
   useTitle("Review");
 
-  const handleDelete = (id) => {
+  npm install primereact primeiconsconst handleDelete = (id) => {
     const proceed = window.confirm(
       "Are you sure, you want to cancel this order"
     );
@@ -38,7 +38,7 @@ const Review = () => {
     return <p>Loading...</p>;
   }
 
-  console.log(user);
+  // console.log(user);
   return (
     <div>
       <div
@@ -47,10 +47,13 @@ const Review = () => {
           backgroundImage: `url(${"https://images.pexels.com/photos/8634711/pexels-photo-8634711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"})`,
         }}
       >
-        <img src={user?.photoURL} alt="" className="rounded-full h-96 w-96" />
+        <img src={user?.photoURL} alt="" className="rounded-full h-52 w-52" />
         <h1 className="font-bold text-5xl text-white">{user?.displayName}</h1>
       </div>
-          <div className="grid grid-cols-2 gap-14">
+      <p className="font-bold text-3xl text-center mt-5">
+        You have {reviews.length} Review
+      </p>
+      <div className="grid grid-cols-2 gap-14">
         {reviews.map((review) => (
           <AllReview
             key={review._id}

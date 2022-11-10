@@ -1,10 +1,7 @@
 import React from "react";
 import {
-  FaRegEdit,
   FaStar,
   FaStarHalfAlt,
-  FaTimes,
-  FaTrashAlt,
 } from "react-icons/fa";
 
 const ShowReview = ({ review }) => {
