@@ -1,15 +1,22 @@
 import React, { useContext } from "react";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Authentication/Authentication";
 
-
 const PrivateRouter = ({ children }) => {
-  const { user,loading } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const location = useLocation();
+  const navigate = useNavigate();
 
   if (loading) {
     return (
-      <p>loading...</p>
+      <div className="flex justify-center items-center">
+        <div
+          className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+          role="status"
+        >
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
     );
   }
 

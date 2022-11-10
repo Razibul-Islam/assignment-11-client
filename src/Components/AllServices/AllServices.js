@@ -7,7 +7,7 @@ import useTitle from "../../hooks/title";
 const AllServices = () => {
   const services = useLoaderData();
   useTitle("All service")
-  console.log(services);
+  // console.log(services);
   return (
     <div className="mt-10">
       <div className="flex flex-wrap -mx-4">

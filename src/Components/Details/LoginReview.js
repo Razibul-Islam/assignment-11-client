@@ -10,7 +10,7 @@ const LoginReview = ({ handleReview }) => {
       {user?.uid ? (
         <div>
           <h1 className="text-6xl font-semibold font-mono mb-10">
-            Leave a Reply
+            Leave a Review
           </h1>
           <form onSubmit={handleReview} className="w-full">
             <div className="flex flex-wrap -mx-3 mb-6">
@@ -66,8 +66,8 @@ const LoginReview = ({ handleReview }) => {
           </form>
         </div>
       ) : (
-        <button className="font-bold text-xl">
-          <Link to="/login">Login to Review</Link>
+        <button className="font-bold text-xl capitalize">
+          <Link to="/login">Please login to add a review</Link>
         </button>
       )}
     </div>

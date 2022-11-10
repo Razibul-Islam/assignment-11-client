@@ -23,13 +23,30 @@ const Login = () => {
     Login(email, password)
       .then((result) => {
         const user = result.user;
-        form.reset();
-        // if (user?.email) {
-        //   const currentUser = {
-        //     email: user.email;
-        //   }
-        // }
-        navigate(from, { replace: true });
+
+        const currentUser = {
+          email: user.email,
+        };
+
+        // console.log(currentUser);
+
+        // get jwt token
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            // localStorage is the easiest but not the most secure place to store jwt
+            localStorage.setItem("Wedding-token", data.token);
+            form.reset();
+            navigate(-1, { replace: true });
+          });
+
       })
       .catch((error) => console.error(error));
   };

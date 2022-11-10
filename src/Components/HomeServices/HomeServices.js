@@ -8,12 +8,12 @@ const HomeServices = () => {
     <div className="mt-10">
       <h1 className="text-6xl font-semibold text-center">My Service</h1>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-7">
-        {services.map((service) => (
-            <HomeServiceLimit
-              key={services?.uid}
-              SingleService={service}
-            ></HomeServiceLimit>
-          ))}
+        {[...services].reverse().map((service) => (
+          <HomeServiceLimit
+            key={services?.uid}
+            SingleService={service}
+          ></HomeServiceLimit>
+        ))}
       </div>
       <div className="flex justify-end -mt-10">
         <Link to="/services" className="btn bg-head border-0 mt-5 text-xl">

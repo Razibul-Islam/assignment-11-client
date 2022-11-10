@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import useTitle from "../../hooks/title";
 import { AuthContext } from "../Authentication/Authentication";
 import AllReview from "./AllReview";
@@ -8,7 +9,7 @@ const Review = () => {
   const [reviews, setReviews] = useState([]);
   useTitle("Review");
 
-  npm install primereact primeiconsconst handleDelete = (id) => {
+  const handleDelete = (id) => {
     const proceed = window.confirm(
       "Are you sure, you want to cancel this order"
     );
@@ -18,9 +19,9 @@ const Review = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           if (data.deletedCount > 0) {
-            alert("deleted successfully");
+            toast.success("Success Fully Deleted");
             const remaining = reviews.filter((odr) => odr._id !== id);
             setReviews(remaining);
           }
@@ -29,13 +30,26 @@ const Review = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/MyReview?email=${user?.email}`)
+    fetch(`http://localhost:5000/MyReview?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("Wedding-token")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, [user?.email]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="flex justify-center items-center">
+        <div
+          className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+          role="status"
+        >
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
   }
 
   // console.log(user);
@@ -50,10 +64,13 @@ const Review = () => {
         <img src={user?.photoURL} alt="" className="rounded-full h-52 w-52" />
         <h1 className="font-bold text-5xl text-white">{user?.displayName}</h1>
       </div>
-      <p className="font-bold text-3xl text-center mt-5">
-        You have {reviews.length} Review
+      <p className="font-bold text-3xl text-center mt-5 capitalize">
+        {" "}
+        {reviews.length < 1
+          ? "You don't have any review please add some review"
+          : `You have ${reviews.length} Review`}{" "}
       </p>
-      <div className="grid grid-cols-2 gap-14">
+      <div className="grid md:grid-cols-2 md:gap-14">
         {reviews.map((review) => (
           <AllReview
             key={review._id}

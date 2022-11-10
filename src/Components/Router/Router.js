@@ -66,7 +66,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "/review",
-        element: <Review></Review>,
+        element: (
+          <PrivateRouter>
+            {" "}
+            <Review></Review>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/updateReview/:id",

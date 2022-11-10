@@ -17,7 +17,7 @@ const AddService = () => {
     const price = form.price.value;
     const description = form.description.value;
 
-    console.log(serviceName);
+    // console.log(serviceName);
 
     const service = {
       service: serviceName,
