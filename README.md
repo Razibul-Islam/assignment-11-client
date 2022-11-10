@@ -35,6 +35,10 @@ Install JWT with npm
 ```bash
   npm install jsonwebtoken
 ```
+Install React Photo View with npm
+```bash
+  npm i react-photo-view
+```
 ## Tech Stack
 
 **Client:** React, TailwindCSS, Firebase,
