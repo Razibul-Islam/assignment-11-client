@@ -14,7 +14,7 @@ const Review = () => {
       "Are you sure, you want to cancel this order"
     );
     if (proceed) {
-      fetch(`http://localhost:5000/reviewDelete/${id}`, {
+      fetch(`https://server-ruddy-one.vercel.app/reviewDelete/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -30,7 +30,7 @@ const Review = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/MyReview?email=${user?.email}`, {
+    fetch(`https://server-ruddy-one.vercel.app/MyReview?email=${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("Wedding-token")}`,
       },

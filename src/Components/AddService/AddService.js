@@ -28,7 +28,7 @@ const AddService = () => {
       rating,
     };
 
-    fetch(`http://localhost:5000/addServices`, {
+    fetch(`https://server-ruddy-one.vercel.app/addServices`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

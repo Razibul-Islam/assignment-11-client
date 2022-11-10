@@ -22,12 +22,12 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/services"),
+        loader: () => fetch("https://server-ruddy-one.vercel.app/services"),
       },
       {
         path: "/services",
         element: <AllServices></AllServices>,
-        loader: () => fetch("http://localhost:5000/allServices"),
+        loader: () => fetch("https://server-ruddy-one.vercel.app/allServices"),
       },
       {
         path: "/register",
@@ -41,7 +41,9 @@ export const router = createBrowserRouter([
         path: "/details/:id",
         element: <Details></Details>,
         loader: ({ params }) => {
-          return fetch(`http://localhost:5000/details/${params.id}`);
+          return fetch(
+            `https://server-ruddy-one.vercel.app/details/${params.id}`
+          );
         },
       },
       {
@@ -77,7 +79,7 @@ export const router = createBrowserRouter([
         path: "/updateReview/:id",
         element: <UpdateReview></UpdateReview>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/review/${params.id}`),
+          fetch(`https://server-ruddy-one.vercel.app/review/${params.id}`),
       },
     ],
   },

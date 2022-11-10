@@ -11,7 +11,7 @@ const UpdateReview = () => {
     const message = event.target.message.value;
     const newReview = { rating, message };
 
-    fetch(`http://localhost:5000/updateReview/${review._id}`, {
+    fetch(`https://server-ruddy-one.vercel.app/updateReview/${review._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
