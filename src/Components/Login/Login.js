@@ -44,7 +44,7 @@ const Login = () => {
             // localStorage is the easiest but not the most secure place to store jwt
             localStorage.setItem("Wedding-token", data.token);
             form.reset();
-            navigate(-1, { replace: true });
+            navigate(from, { replace: true });
           });
 
       })

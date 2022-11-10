@@ -38,8 +38,7 @@ const Authentication = ({ children }) => {
   };
 
   const updateUserProfile = (profile) => {
-    return updateProfile(auth.currentUser, profile)
-      .then(res => setUser(user))
+    return updateProfile(auth.currentUser, profile);
   };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
