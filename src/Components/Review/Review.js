@@ -5,7 +5,7 @@ import { AuthContext } from "../Authentication/Authentication";
 import AllReview from "./AllReview";
 
 const Review = () => {
-  const { user, loading } = useContext(AuthContext);
+  const { user, loading, logout } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
   useTitle("Review");
 
@@ -21,7 +21,17 @@ const Review = () => {
         .then((data) => {
           // console.log(data);
           if (data.deletedCount > 0) {
-            toast.success("Success Fully Deleted");
+            // toast.error("Success Fully Deleted");
+            toast.error("delete Successfully", {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
             const remaining = reviews.filter((odr) => odr._id !== id);
             setReviews(remaining);
           }
@@ -35,9 +45,19 @@ const Review = () => {
         authorization: `Bearer ${localStorage.getItem("Wedding-token")}`,
       },
     })
-      .then((res) => res.json())
+      // .then((res) => {
+      //   if(st)
+      //   res.json();
+      // })
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          return logout();
+        }
+
+        return res.json();
+      })
       .then((data) => setReviews(data));
-  }, [user?.email]);
+  }, [user?.email, logout]);
 
   if (loading) {
     return (

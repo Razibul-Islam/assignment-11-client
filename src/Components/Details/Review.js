@@ -9,7 +9,6 @@ const Review = ({ id, name }) => {
   const [reviews, setReviews] = useState([]);
   const [refresh, setRefresh] = useState(false);
 
-
   const handleReview = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -31,9 +30,7 @@ const Review = ({ id, name }) => {
       serviceId,
       serviceName,
       date: yearDate,
-    
     };
-
 
     fetch(`https://server-ruddy-one.vercel.app/review`, {
       method: "POST",
@@ -67,19 +64,17 @@ const Review = ({ id, name }) => {
         // setRefresh(!refresh);
         setRefresh((prev) => !prev);
       });
-  }, [ name]);
+  }, [name]);
 
   // console.log(reviews);
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center">
-        <div
-          className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
-          role="status"
-        >
-          <span className="visually-hidden">Loading...</span>
-        </div>
+      <div
+        class="spinner-grow inline-block w-12 h-12 bg-current rounded-full opacity-0"
+        role="status"
+      >
+        <span class="visually-hidden">Loading...</span>
       </div>
     );
   }

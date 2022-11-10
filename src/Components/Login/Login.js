@@ -6,7 +6,7 @@ import { FaGoogle } from "react-icons/fa";
 import useTitle from "../../hooks/title";
 
 const Login = () => {
-  const { Login, providerLogin } = useContext(AuthContext);
+  const { Login, providerLogin, loading } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   useTitle("Login");
   const navigate = useNavigate();
@@ -19,7 +19,21 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+
     // console.log(email, password);
+
+    if (loading) {
+      return (
+        <>
+          <div
+            class="spinner-grow inline-block w-12 h-12 bg-current rounded-full opacity-0"
+            role="status"
+          >
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </>
+      );
+    }
     Login(email, password)
       .then((result) => {
         const user = result.user;

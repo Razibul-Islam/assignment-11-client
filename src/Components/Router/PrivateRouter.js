@@ -5,17 +5,15 @@ import { AuthContext } from "../Authentication/Authentication";
 const PrivateRouter = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const location = useLocation();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center">
-        <div
-          className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
-          role="status"
-        >
-          <span className="visually-hidden">Loading...</span>
-        </div>
+      <div
+        class="spinner-grow inline-block w-12 h-12 bg-current rounded-full opacity-0"
+        role="status"
+      >
+        <span class="visually-hidden">Loading...</span>
       </div>
     );
   }

@@ -14,7 +14,16 @@ const Register = () => {
   const location = useLocation();
 
   if (loading) {
-    return <div>loading...</div>
+    return (
+      <>
+        <div
+          class="spinner-grow inline-block w-12 h-12 bg-current rounded-full opacity-0"
+          role="status"
+        >
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </>
+    );
   }
 
   const from = location.state?.from?.pathname || "/";
@@ -24,9 +33,9 @@ const Register = () => {
       displayName: name,
       photoURL: photoURL,
     };
-    updateUserProfile(profile)
-      // .then(() => {})
-      // .catch((error) => console.error(error));
+    updateUserProfile(profile);
+    // .then(() => {})
+    // .catch((error) => console.error(error));
   };
 
   const handleSubmit = (event) => {
@@ -41,10 +50,34 @@ const Register = () => {
     register(email, password)
       .then((result) => {
         const user = result.user;
-        handleUpdateUserProfile(name, photo);
-        form.reset();
+
+        const currentUser = {
+          email: user.email,
+        };
+
+        // console.log(currentUser);
+
+        // get jwt token
+        fetch("https://server-ruddy-one.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            // localStorage is the easiest but not the most secure place to store jwt
+            localStorage.setItem("Wedding-token", data.token);
+            form.reset();
+            navigate(from, { replace: true });
+            handleUpdateUserProfile(name, photo);
+          });
+
+        // form.reset();
         // console.log(user);
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
       })
       .catch((err) => console.error(err.code));
   };
