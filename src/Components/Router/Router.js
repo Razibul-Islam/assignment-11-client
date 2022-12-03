@@ -22,12 +22,12 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("https://server-ruddy-one.vercel.app/services"),
+        loader: () => fetch("https://wedding-shots-server.vercel.app/services"),
       },
       {
         path: "/services",
         element: <AllServices></AllServices>,
-        loader: () => fetch("https://server-ruddy-one.vercel.app/allServices"),
+        loader: () => fetch("https://wedding-shots-server.vercel.app/allServices"),
       },
       {
         path: "/register",
@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
         element: <Details></Details>,
         loader: ({ params }) => {
           return fetch(
-            `https://server-ruddy-one.vercel.app/details/${params.id}`
+            `https://wedding-shots-server.vercel.app/details/${params.id}`
           );
         },
       },
@@ -79,7 +79,7 @@ export const router = createBrowserRouter([
         path: "/updateReview/:id",
         element: <UpdateReview></UpdateReview>,
         loader: ({ params }) =>
-          fetch(`https://server-ruddy-one.vercel.app/review/${params.id}`),
+          fetch(`https://wedding-shots-server.vercel.app/review/${params.id}`),
       },
     ],
   },

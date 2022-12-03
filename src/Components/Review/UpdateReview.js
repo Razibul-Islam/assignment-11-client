@@ -11,13 +11,16 @@ const UpdateReview = () => {
     const message = event.target.message.value;
     const newReview = { rating, message };
 
-    fetch(`https://server-ruddy-one.vercel.app/updateReview/${review._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newReview),
-    })
+    fetch(
+      `https://wedding-shots-server.vercel.app/updateReview/${review._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newReview),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

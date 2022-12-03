@@ -28,7 +28,7 @@ const AddService = () => {
       rating,
     };
 
-    fetch(`https://server-ruddy-one.vercel.app/addServices`, {
+    fetch(`https://wedding-shots-server.vercel.app/addServices`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

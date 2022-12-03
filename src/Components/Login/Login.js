@@ -45,7 +45,7 @@ const Login = () => {
         // console.log(currentUser);
 
         // get jwt token
-        fetch("https://server-ruddy-one.vercel.app/jwt", {
+        fetch("https://wedding-shots-server.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",

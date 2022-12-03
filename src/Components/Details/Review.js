@@ -32,7 +32,7 @@ const Review = ({ id, name }) => {
       date: yearDate,
     };
 
-    fetch(`https://server-ruddy-one.vercel.app/review`, {
+    fetch(`https://wedding-shots-server.vercel.app/review`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -55,7 +55,7 @@ const Review = ({ id, name }) => {
   // console.log(reviews);
 
   useEffect(() => {
-    const url = `https://server-ruddy-one.vercel.app/review?serviceName=${name}`;
+    const url = `https://wedding-shots-server.vercel.app/review?serviceName=${name}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

@@ -14,7 +14,7 @@ const Review = () => {
       "Are you sure, you want to cancel this order"
     );
     if (proceed) {
-      fetch(`https://server-ruddy-one.vercel.app/reviewDelete/${id}`, {
+      fetch(`https://wedding-shots-server.vercel.app/reviewDelete/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -40,11 +40,14 @@ const Review = () => {
   };
 
   useEffect(() => {
-    fetch(`https://server-ruddy-one.vercel.app/MyReview?email=${user?.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("Wedding-token")}`,
-      },
-    })
+    fetch(
+      `https://wedding-shots-server.vercel.app/MyReview?email=${user?.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("Wedding-token")}`,
+        },
+      }
+    )
       // .then((res) => {
       //   if(st)
       //   res.json();
